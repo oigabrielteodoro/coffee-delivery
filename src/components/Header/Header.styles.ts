@@ -9,4 +9,6 @@ export const HeaderContainer = styled.header`
 export const Actions = styled.div`
   display: flex;
   align-items: center;
+
+  column-gap: 1.2rem;
 `;
