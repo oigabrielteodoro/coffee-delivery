@@ -4,10 +4,20 @@ const buttonVariants = {
   "purple-light": css`
     background-color: ${({ theme }) => theme["purple-light"]};
     color: ${({ theme }) => theme.purple};
+
+    &:hover {
+      background-color: ${({ theme }) => theme.purple};
+      color: ${({ theme }) => theme.white};
+    }
   `,
   "yellow-light": css`
     background-color: ${({ theme }) => theme["yellow-light"]};
     color: ${({ theme }) => theme["yellow-dark"]};
+
+    &:hover {
+      background-color: ${({ theme }) => theme.yellow};
+      color: ${({ theme }) => theme.white};
+    }
   `,
 };
 
@@ -28,6 +38,7 @@ export const Button = styled.button<ButtonProps>`
 
   font-size: 1.4rem;
   line-height: 130%;
+  transition: all 0.3s;
 
   ${({ variant }) => buttonVariants[variant]}
 `;
