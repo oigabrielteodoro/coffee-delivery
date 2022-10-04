@@ -7,6 +7,10 @@ export const GlobalStyle = createGlobalStyle`
     box-sizing: border-box;
   }
 
+  html {
+    font-size: 62.5%;
+  }
+
   :focus {
     outline: 0;
     box-shadow: 0 0 0 2px ${({ theme }) => theme.yellow};
