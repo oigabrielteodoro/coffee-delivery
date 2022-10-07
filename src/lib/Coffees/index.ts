@@ -1,4 +1,4 @@
-import { AssetsCoffees } from "../../assets";
+import { AssetsCoffees } from "src/assets";
 
 export type CoffeeType =
   | "TRADITIONAL"

@@ -1,4 +1,4 @@
-import { coffees } from "../../../lib/Coffees";
+import { coffees } from "src/lib/Coffees";
 
 import { CoffeeCard } from "./CoffeeCard";
 

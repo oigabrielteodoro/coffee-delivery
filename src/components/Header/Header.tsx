@@ -1,7 +1,7 @@
 import { MapPin, ShoppingCart } from "phosphor-react";
 
-import { Assets } from "../../assets";
-import { Button } from "../Button";
+import { Assets } from "src/assets";
+import { Button } from "src/components/Button";
 
 import { Actions, HeaderContainer } from "./Header.styles";
 

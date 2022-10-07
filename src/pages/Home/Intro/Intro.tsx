@@ -1,6 +1,6 @@
 import { Coffee, Package, ShoppingCart, Timer } from "phosphor-react";
 
-import { Assets } from "../../../assets";
+import { Assets } from "src/assets";
 import {
   Background,
   Feature,

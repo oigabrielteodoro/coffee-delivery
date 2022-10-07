@@ -1,9 +1,10 @@
-import { Minus, Plus, ShoppingCart } from "phosphor-react";
 import { useState } from "react";
-import { Button } from "../../../../components/Button";
+import { Minus, Plus, ShoppingCart } from "phosphor-react";
 
-import { Coffee, coffeeTypeDictionary } from "../../../../lib/Coffees";
-import { toCurrency } from "../../../../lib/Money";
+import { Button } from "src/components/Button";
+import { toCurrency } from "src/lib/Money";
+import { Coffee, coffeeTypeDictionary } from "src/lib/Coffees";
+
 import {
   Card,
   Image,
