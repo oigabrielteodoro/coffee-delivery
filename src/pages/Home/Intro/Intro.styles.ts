@@ -53,6 +53,7 @@ export const Feature = styled.li`
   column-gap: 1.2rem;
 
   font-size: 1.6rem;
+  white-space: nowrap;
 `;
 
 type FeatureIconProps = {
