@@ -24,25 +24,25 @@ export function Intro() {
         <FeaturesContainer>
           <Feature>
             <FeatureIcon color="yellow-dark">
-              <ShoppingCart size={18} />
+              <ShoppingCart size={18} weight="fill" />
             </FeatureIcon>
             Compra simples e segura
           </Feature>
           <Feature>
             <FeatureIcon color="base-text">
-              <Package size={18} />
+              <Package size={18} weight="fill" />
             </FeatureIcon>
             Embalagem mantém o café intacto
           </Feature>
           <Feature>
             <FeatureIcon color="yellow">
-              <Timer size={18} />
+              <Timer size={18} weight="fill" />
             </FeatureIcon>
             Entrega rápida e rastreada
           </Feature>
           <Feature>
             <FeatureIcon color="purple">
-              <Coffee size={18} />
+              <Coffee size={18} weight="fill" />
             </FeatureIcon>
             O café chega fresquinho até você
           </Feature>

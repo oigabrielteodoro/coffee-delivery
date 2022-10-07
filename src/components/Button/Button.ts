@@ -10,6 +10,15 @@ const buttonVariants = {
       color: ${({ theme }) => theme.white};
     }
   `,
+  "purple-dark": css`
+    background-color: ${({ theme }) => theme["purple-dark"]};
+    color: ${({ theme }) => theme.white};
+
+    &:hover {
+      background-color: ${({ theme }) => theme.purple};
+      color: ${({ theme }) => theme.white};
+    }
+  `,
   "yellow-light": css`
     background-color: ${({ theme }) => theme["yellow-light"]};
     color: ${({ theme }) => theme["yellow-dark"]};
