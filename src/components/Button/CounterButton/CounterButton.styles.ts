@@ -17,7 +17,7 @@ export const CounterContainer = styled.div`
   > span {
     font-size: 1.6rem;
     color: ${({ theme }) => theme["base-title"]};
-    min-width: 2rem;
+    min-width: 2.4rem;
     text-align: center;
   }
 `;
