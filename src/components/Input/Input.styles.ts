@@ -28,6 +28,8 @@ export const InputElement = styled.input`
   width: 100%;
   padding: 1.2rem;
 
+  transition: all 0.3s;
+
   &:not(:required) {
     padding-right: 6.8rem;
   }
