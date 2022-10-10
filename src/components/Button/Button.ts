@@ -38,6 +38,7 @@ export const Button = styled.button<ButtonProps>`
   display: flex;
   align-items: center;
   cursor: pointer;
+  position: relative;
 
   padding: 0.8rem;
   column-gap: 0.4rem;
