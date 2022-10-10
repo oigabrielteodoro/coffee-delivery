@@ -18,9 +18,11 @@ export const Field = styled.fieldset`
 export const OptionalPlaceholder = styled.span`
   position: absolute;
   color: ${({ theme }) => theme["base-label"]};
+
   font-size: 1.2rem;
   font-weight: 400;
   font-style: italic;
+
   right: 1.2rem;
   top: 50%;
   transform: translateY(-50%);
@@ -32,6 +34,10 @@ export const Input = styled.input`
 
   width: 100%;
   padding: 1.2rem;
+
+  &.addressDetails {
+    padding-right: 6.8rem;
+  }
 
   ${({ theme }) => css`
     background: ${theme["base-input"]};

@@ -27,7 +27,11 @@ export function CheckoutForm() {
       <GridContainer templateColumns="1fr 2fr">
         <Input type="number" placeholder="Número" {...register("number")} />
         <Field>
-          <Input placeholder="Complemento" {...register("details")} />
+          <Input
+            placeholder="Complemento"
+            className="addressDetails"
+            {...register("details")}
+          />
           <OptionalPlaceholder>Opcional</OptionalPlaceholder>
         </Field>
       </GridContainer>
