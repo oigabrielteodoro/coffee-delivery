@@ -18,7 +18,9 @@ export function Header() {
   return (
     <HeaderContainer>
       <Content>
-        <img src={Assets.LOGO} />
+        <Link to="/">
+          <img src={Assets.LOGO} />
+        </Link>
         <Actions>
           <Button variant="purple-light">
             <MapPin size={20} weight="fill" />

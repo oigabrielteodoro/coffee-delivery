@@ -16,6 +16,16 @@ export const Content = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
+
+  > a {
+    box-shadow: none;
+    transition: all 0.3s;
+
+    &:focus,
+    &:hover {
+      opacity: 0.8;
+    }
+  }
 `;
 
 export const Actions = styled.div`
