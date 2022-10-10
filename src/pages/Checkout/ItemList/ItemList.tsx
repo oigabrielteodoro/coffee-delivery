@@ -1,4 +1,5 @@
 import { useCartContext } from "src/contexts/CartContext";
+import { toCurrency } from "src/lib/Money";
 
 import { Item } from "./Item";
 import {
@@ -9,8 +10,11 @@ import {
   Total,
 } from "./ItemList.styles";
 
+// R$ 3,50
+const DELIVERY_TAX = 350;
+
 export function ItemList() {
-  const { items } = useCartContext();
+  const { items, totalAmount } = useCartContext();
 
   return (
     <CardContainer>
@@ -22,15 +26,15 @@ export function ItemList() {
       <TotalContainer>
         <Total>
           <span>Total de itens</span>
-          <span>R$ 29,70</span>
+          <span>{toCurrency(totalAmount)}</span>
         </Total>
         <Total>
           <span>Entrega</span>
-          <span>R$ 3,50</span>
+          <span>{toCurrency(DELIVERY_TAX)}</span>
         </Total>
         <Total>
           <strong>Total</strong>
-          <strong>R$ 33,20</strong>
+          <strong>{toCurrency(totalAmount + DELIVERY_TAX)}</strong>
         </Total>
       </TotalContainer>
       <ConfirmOrderButton type="submit" variant="yellow">
