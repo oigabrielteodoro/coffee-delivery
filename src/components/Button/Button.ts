@@ -10,6 +10,11 @@ const buttonVariants = {
       color: ${({ theme }) => theme.white};
     }
   `,
+  "purple-light-bordered": css`
+    background-color: ${({ theme }) => theme["purple-light"]};
+    color: ${({ theme }) => theme["base-text"]};
+    border: 0.1rem solid ${({ theme }) => theme.purple};
+  `,
   "purple-dark": css`
     background-color: ${({ theme }) => theme["purple-dark"]};
     color: ${({ theme }) => theme.white};
@@ -28,6 +33,15 @@ const buttonVariants = {
       color: ${({ theme }) => theme.white};
     }
   `,
+  base: css`
+    background-color: ${({ theme }) => theme["base-button"]};
+    color: ${({ theme }) => theme["base-text"]};
+
+    &:hover {
+      background-color: ${({ theme }) => theme["base-hover"]};
+      color: ${({ theme }) => theme["base-subtitle"]};
+    }
+  `,
 };
 
 type ButtonProps = {
@@ -43,7 +57,7 @@ export const Button = styled.button<ButtonProps>`
   padding: 0.8rem;
   column-gap: 0.4rem;
 
-  border: 0;
+  border: 0.1rem solid transparent;
   border-radius: 0.6rem;
 
   font-size: 1.4rem;
