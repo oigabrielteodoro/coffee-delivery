@@ -33,6 +33,14 @@ const buttonVariants = {
       color: ${({ theme }) => theme.white};
     }
   `,
+  yellow: css`
+    background-color: ${({ theme }) => theme.yellow};
+    color: ${({ theme }) => theme.white};
+
+    &:hover {
+      background-color: ${({ theme }) => theme["yellow-dark"]};
+    }
+  `,
   base: css`
     background-color: ${({ theme }) => theme["base-button"]};
     color: ${({ theme }) => theme["base-text"]};

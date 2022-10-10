@@ -5,8 +5,7 @@ export const CounterContainer = styled.div`
   align-items: center;
   row-gap: 0.4rem;
 
-  height: 3.8rem;
-  padding-inline: 1.2rem;
+  padding: 0.8rem;
   background: ${({ theme }) => theme["base-button"]};
   border-radius: 0.6rem;
 
