@@ -33,7 +33,9 @@ export function ProductList() {
           <strong>R$ 33,20</strong>
         </Total>
       </TotalContainer>
-      <ConfirmOrderButton variant="yellow">Confirmar pedido</ConfirmOrderButton>
+      <ConfirmOrderButton type="submit" variant="yellow">
+        Confirmar pedido
+      </ConfirmOrderButton>
     </CardContainer>
   );
 }
