@@ -3,14 +3,16 @@ import { CreditCard, Bank, Money } from "phosphor-react";
 import { useTheme } from "styled-components";
 
 import { PaymentButton, PaymentContainer } from "./Payment.styles";
+import { useFormContext } from "react-hook-form";
 
 type PaymentType = "CREDIT_CARD" | "DEBIT_CARD" | "CASH";
 
 export function Payment() {
   const theme = useTheme();
 
-  const [selectedPaymentType, setSelectedPaymentType] =
-    useState<PaymentType | null>(null);
+  const { watch, setValue } = useFormContext();
+
+  const selectedPaymentType = watch("paymentType") as PaymentType | null;
 
   const isCash = selectedPaymentType === "CASH";
   const isDebitCard = selectedPaymentType === "DEBIT_CARD";
@@ -19,13 +21,17 @@ export function Payment() {
   const defaultVariant = "base";
   const activeVariant = "purple-light-bordered";
 
+  function handleSelectPaymentType(paymentType: PaymentType) {
+    setValue("paymentType", paymentType);
+  }
+
   return (
     <PaymentContainer>
       <PaymentButton
         type="button"
         disabled={isCreditCard}
         variant={isCreditCard ? activeVariant : defaultVariant}
-        onClick={() => setSelectedPaymentType("CREDIT_CARD")}
+        onClick={() => handleSelectPaymentType("CREDIT_CARD")}
       >
         <CreditCard size={16} color={theme.purple} />
         Cartão de crédito
@@ -34,7 +40,7 @@ export function Payment() {
         type="button"
         disabled={isDebitCard}
         variant={isDebitCard ? activeVariant : defaultVariant}
-        onClick={() => setSelectedPaymentType("DEBIT_CARD")}
+        onClick={() => handleSelectPaymentType("DEBIT_CARD")}
       >
         <Bank size={16} color={theme.purple} />
         Cartão de débito
@@ -43,7 +49,7 @@ export function Payment() {
         type="button"
         disabled={isCash}
         variant={isCash ? activeVariant : defaultVariant}
-        onClick={() => setSelectedPaymentType("CASH")}
+        onClick={() => handleSelectPaymentType("CASH")}
       >
         <Money size={16} color={theme.purple} />
         Dinheiro
