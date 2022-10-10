@@ -3,12 +3,12 @@ import { Link } from "react-router-dom";
 
 import { Assets } from "src/assets";
 import { Button } from "src/components/Button";
-import { useCartProvider } from "src/contexts/CartContext";
+import { useCartContext } from "src/contexts/CartContext";
 
 import { Actions, HeaderContainer, TotalAmount } from "./Header.styles";
 
 export function Header() {
-  const { totalAmount } = useCartProvider();
+  const { totalAmount } = useCartContext();
 
   return (
     <HeaderContainer>

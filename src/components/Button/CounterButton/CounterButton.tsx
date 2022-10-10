@@ -1,5 +1,5 @@
 import { Minus, Plus } from "phosphor-react";
-import { useCartProvider } from "src/contexts/CartContext";
+import { useCartContext } from "src/contexts/CartContext";
 import { Coffee } from "src/lib/Coffees";
 import { Button, CounterContainer } from "./CounterButton.styles";
 
@@ -8,7 +8,7 @@ type Props = {
 };
 
 export function CounterButton({ coffee }: Props) {
-  const { incrementAmount, decrementAmount, getCartItem } = useCartProvider();
+  const { incrementAmount, decrementAmount, getCartItem } = useCartContext();
 
   const amount = getCartItem(coffee)?.amount ?? 0;
 

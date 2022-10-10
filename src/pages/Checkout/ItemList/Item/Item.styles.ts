@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 import { Button as BaseButton } from "src/components/Button";
 
-export const ProductContainer = styled.li`
+export const ItemContainer = styled.li`
   display: flex;
   align-items: center;
   padding-bottom: 2.4rem;
@@ -18,7 +18,7 @@ export const ProductContainer = styled.li`
   }
 `;
 
-export const ProductInfo = styled.div`
+export const ItemInfo = styled.div`
   display: flex;
   flex-direction: column;
 
@@ -41,7 +41,7 @@ export const RemoveButton = styled(BaseButton)`
   line-height: 130%;
 `;
 
-export const ProductCostAmount = styled.strong`
+export const ItemCostAmount = styled.strong`
   font-size: 1.6rem;
   font-weight: 700;
   line-height: 130%;

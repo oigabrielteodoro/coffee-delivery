@@ -1,22 +1,22 @@
 import { useCartProvider } from "src/contexts/CartContext";
 
-import { ProductItem } from "./ProductItem";
+import { Item } from "./Item";
 import {
   CardContainer,
   ListContainer,
   ConfirmOrderButton,
   TotalContainer,
   Total,
-} from "./ProductList.styles";
+} from "./ItemList.styles";
 
-export function ProductList() {
+export function ItemList() {
   const { items } = useCartProvider();
 
   return (
     <CardContainer>
       <ListContainer>
-        {items.map((cartItem) => (
-          <ProductItem key={cartItem.id} product={cartItem} />
+        {items.map((item) => (
+          <Item key={item.id} item={item} />
         ))}
       </ListContainer>
       <TotalContainer>

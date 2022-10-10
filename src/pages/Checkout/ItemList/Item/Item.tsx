@@ -1,44 +1,44 @@
 import { Trash } from "phosphor-react";
 import { Button } from "src/components/Button";
 import { CounterButton } from "src/components/Button/CounterButton";
-import { useCartProvider } from "src/contexts/CartContext";
+import { useCartContext } from "src/contexts/CartContext";
 import { CartItem } from "src/reducers/cart/actions";
 import { useTheme } from "styled-components";
 import {
   Actions,
-  ProductContainer,
-  ProductCostAmount,
-  ProductInfo,
+  ItemContainer,
+  ItemCostAmount,
+  ItemInfo,
   RemoveButton,
-} from "./ProductItem.styles";
+} from "./Item.styles";
 
 type Props = {
-  product: CartItem;
+  item: CartItem;
 };
 
-export function ProductItem({ product }: Props) {
+export function Item({ item }: Props) {
   const theme = useTheme();
 
-  const { removeCartItem } = useCartProvider();
+  const { removeCartItem } = useCartContext();
 
   function handleRemove() {
-    removeCartItem(product);
+    removeCartItem(item);
   }
 
   return (
-    <ProductContainer>
-      <img src={product.product.image} />
-      <ProductInfo>
-        <span>{product.product.name}</span>
+    <ItemContainer>
+      <img src={item.product.image} />
+      <ItemInfo>
+        <span>{item.product.name}</span>
         <Actions>
-          <CounterButton coffee={product.product} />
+          <CounterButton coffee={item.product} />
           <RemoveButton variant="base" type="button" onClick={handleRemove}>
             <Trash color={theme.purple} />
             Remover
           </RemoveButton>
         </Actions>
-      </ProductInfo>
-      <ProductCostAmount>R$ 9,90</ProductCostAmount>
-    </ProductContainer>
+      </ItemInfo>
+      <ItemCostAmount>R$ 9,90</ItemCostAmount>
+    </ItemContainer>
   );
 }

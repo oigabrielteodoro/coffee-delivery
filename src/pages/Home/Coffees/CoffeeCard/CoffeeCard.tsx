@@ -16,7 +16,7 @@ import {
   Price,
   Actions,
 } from "./CoffeeCard.styles";
-import { useCartProvider } from "src/contexts/CartContext";
+import { useCartContext } from "src/contexts/CartContext";
 import { CounterButton } from "src/components/Button/CounterButton";
 
 type Props = {
@@ -24,7 +24,7 @@ type Props = {
 };
 
 export function CoffeeCard({ coffee }: Props) {
-  const { createNewCartItem, getCartItem } = useCartProvider();
+  const { createNewCartItem, getCartItem } = useCartContext();
 
   const amount = getCartItem(coffee)?.amount;
 

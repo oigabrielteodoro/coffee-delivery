@@ -136,7 +136,7 @@ export function CartProvider({ children }: CartProviderProps) {
   );
 }
 
-export function useCartProvider() {
+export function useCartContext() {
   const context = useContext(CartContext);
 
   return context;

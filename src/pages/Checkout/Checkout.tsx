@@ -6,13 +6,14 @@ import { useTheme } from "styled-components";
 import * as zod from "zod";
 
 import { Card } from "src/components/Card";
-
-import { Payment, PaymentType } from "./Payment";
-import { ProductList } from "./ProductList";
-import { CheckoutForm } from "./CheckoutForm";
-import { CheckoutContainer, FinishYourOrderContainer } from "./Checkout.styles";
+import { useCartContext } from "src/contexts/CartContext";
 import { useOrderContext } from "src/contexts/OrderContext";
-import { useCartProvider } from "src/contexts/CartContext";
+
+import { ItemList } from "./ItemList";
+import { CheckoutForm } from "./CheckoutForm";
+import { Payment, PaymentType } from "./Payment";
+
+import { CheckoutContainer, FinishYourOrderContainer } from "./Checkout.styles";
 
 const REQUIRED_FIELD_MESSAGE = "Campo obrigatório.";
 
@@ -41,7 +42,7 @@ export function Checkout() {
   const theme = useTheme();
   const navigate = useNavigate();
 
-  const { items, resetCart } = useCartProvider();
+  const { items, resetCart } = useCartContext();
   const { createNewOrder } = useOrderContext();
 
   const form = useForm<FinishYourOrderParams>({
@@ -88,7 +89,7 @@ export function Checkout() {
           </FinishYourOrderContainer>
           <div>
             <h1>Cafés selecionados</h1>
-            <ProductList />
+            <ItemList />
           </div>
         </form>
       </CheckoutContainer>
