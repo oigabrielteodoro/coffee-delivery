@@ -10,7 +10,7 @@ import {
 export function CheckoutForm() {
   const { register, watch } = useFormContext();
 
-  const postalCodeValue = watch("postalCode");
+  const postalCodeValue = watch("postalCode", "");
 
   return (
     <GridContainer templateColumns="1fr">
