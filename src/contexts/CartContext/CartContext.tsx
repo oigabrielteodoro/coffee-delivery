@@ -28,7 +28,7 @@ type CartContextData = {
   getCartItem: (coffee: Coffee) => CartItem | undefined;
   incrementAmount: (coffee: Coffee) => void;
   decrementAmount: (coffee: Coffee) => void;
-  removeCartItem: (coffee: Coffee) => void;
+  removeCartItem: (product: CartItem) => void;
   createNewCartItem: (coffee: Coffee, amount: number) => void;
 };
 
@@ -102,12 +102,8 @@ export function CartProvider({ children }: CartProviderProps) {
     dispatch(updateAmountCartItemAction(cartItem, newAmount));
   }
 
-  function removeCartItem(coffee: Coffee) {
-    const cartItem = getCartItem(coffee);
-
-    if (!cartItem) return;
-
-    dispatch(removeCartItemAction(cartItem));
+  function removeCartItem(product: CartItem) {
+    dispatch(removeCartItemAction(product));
   }
 
   const totalAmount = useMemo(() => {

@@ -1,6 +1,7 @@
 import { Trash } from "phosphor-react";
 import { Button } from "src/components/Button";
 import { CounterButton } from "src/components/Button/CounterButton";
+import { useCartProvider } from "src/contexts/CartContext";
 import { CartItem } from "src/reducers/cart/actions";
 import { useTheme } from "styled-components";
 import {
@@ -18,6 +19,12 @@ type Props = {
 export function ProductItem({ product }: Props) {
   const theme = useTheme();
 
+  const { removeCartItem } = useCartProvider();
+
+  function handleRemove() {
+    removeCartItem(product);
+  }
+
   return (
     <ProductContainer>
       <img src={product.product.image} />
@@ -25,7 +32,7 @@ export function ProductItem({ product }: Props) {
         <span>{product.product.name}</span>
         <Actions>
           <CounterButton coffee={product.product} />
-          <RemoveButton variant="base">
+          <RemoveButton variant="base" type="button" onClick={handleRemove}>
             <Trash color={theme.purple} />
             Remover
           </RemoveButton>
