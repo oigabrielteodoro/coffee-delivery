@@ -7,15 +7,12 @@ import { Card } from "src/components/Card";
 import { Payment } from "./Payment";
 import { CheckoutForm } from "./CheckoutForm";
 import { CheckoutContainer, FinishYourOrderContainer } from "./Checkout.styles";
+import { ProductList } from "./ProductList";
 
 export function Checkout() {
   const theme = useTheme();
 
-  const form = useForm({
-    defaultValues: {
-      postalCode: "",
-    },
-  });
+  const form = useForm();
 
   return (
     <FormProvider {...form}>
@@ -40,6 +37,7 @@ export function Checkout() {
           </FinishYourOrderContainer>
           <div>
             <h1>Cafés selecionados</h1>
+            <ProductList />
           </div>
         </form>
       </CheckoutContainer>
