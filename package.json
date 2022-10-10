@@ -9,6 +9,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@hookform/resolvers": "2.9.8",
     "fs": "0.0.1-security",
     "immer": "9.0.15",
     "phosphor-react": "1.4.1",
@@ -18,7 +19,8 @@
     "react-router-dom": "6.4.1",
     "styled-components": "5.3.6",
     "uuid": "9.0.0",
-    "vanilla-masker": "1.2.0"
+    "vanilla-masker": "1.2.0",
+    "zod": "3.19.1"
   },
   "devDependencies": {
     "@types/react": "^18.0.17",
