@@ -1,4 +1,4 @@
-import { CurrencyDollar, MapPin } from "phosphor-react";
+import { CurrencyDollar, MapPinLine } from "phosphor-react";
 import { useNavigate } from "react-router-dom";
 import { FormProvider, useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -11,42 +11,46 @@ import { useOrderContext } from "src/contexts/OrderContext";
 
 import { ItemList } from "./ItemList";
 import { CheckoutForm } from "./CheckoutForm";
-import { Payment, PaymentType } from "./Payment";
+import { Payment } from "./Payment";
 
 import { CheckoutContainer, FinishYourOrderContainer } from "./Checkout.styles";
 
 const REQUIRED_FIELD_MESSAGE = "Campo obrigatório.";
 
-const addressValidationSchema = zod.object({
+const createNewOrderValidationSchema = zod.object({
   postalCode: zod.string().min(1, REQUIRED_FIELD_MESSAGE),
   street: zod.string().min(1, REQUIRED_FIELD_MESSAGE),
   number: zod
     .number({ invalid_type_error: "Apenas números." })
     .min(1, REQUIRED_FIELD_MESSAGE),
-  details: zod.string().min(1, REQUIRED_FIELD_MESSAGE),
   address: zod.string().min(1, REQUIRED_FIELD_MESSAGE),
   city: zod.string().min(1, REQUIRED_FIELD_MESSAGE),
   state: zod
     .string()
     .min(1, REQUIRED_FIELD_MESSAGE)
     .max(2, "Digite a UF do estado."),
+  paymentType: zod.union([
+    zod.literal("CREDIT_CARD"),
+    zod.literal("DEBIT_CARD"),
+    zod.literal("CASH"),
+  ]),
 });
 
-export type Address = zod.infer<typeof addressValidationSchema>;
+export type CreateNewOrderParams = zod.infer<
+  typeof createNewOrderValidationSchema
+>;
 
-type FinishYourOrderParams = Address & {
-  paymentType: PaymentType;
-};
+export type Address = Omit<CreateNewOrderParams, "paymentType">;
 
 export function Checkout() {
   const theme = useTheme();
   const navigate = useNavigate();
 
-  const { items, resetCart } = useCartContext();
+  const { resetCart } = useCartContext();
   const { createNewOrder } = useOrderContext();
 
-  const form = useForm<FinishYourOrderParams>({
-    resolver: zodResolver(addressValidationSchema),
+  const form = useForm<CreateNewOrderParams>({
+    resolver: zodResolver(createNewOrderValidationSchema),
   });
 
   const { handleSubmit } = form;
@@ -54,11 +58,10 @@ export function Checkout() {
   function handleFinishOrder({
     paymentType,
     ...address
-  }: FinishYourOrderParams) {
+  }: CreateNewOrderParams) {
     createNewOrder({
       address,
       paymentType,
-      products: items,
     });
 
     resetCart();
@@ -75,7 +78,7 @@ export function Checkout() {
             <Card
               title="Endereço de entrega"
               subTitle="Informe o endereço onde deseja receber seu pedido"
-              icon={<MapPin color={theme.yellow} size={22} />}
+              icon={<MapPinLine color={theme.yellow} size={22} />}
             >
               <CheckoutForm />
             </Card>

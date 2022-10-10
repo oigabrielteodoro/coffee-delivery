@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { CreditCard, Bank, Money } from "phosphor-react";
 import { useTheme } from "styled-components";
 
@@ -10,7 +10,11 @@ export type PaymentType = "CREDIT_CARD" | "DEBIT_CARD" | "CASH";
 export function Payment() {
   const theme = useTheme();
 
-  const { watch, setValue } = useFormContext();
+  const { watch, setValue, register } = useFormContext();
+
+  useEffect(() => {
+    register("paymentType");
+  }, []);
 
   const selectedPaymentType = watch("paymentType") as PaymentType | null;
 

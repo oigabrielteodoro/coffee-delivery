@@ -1,4 +1,4 @@
-import { useCartProvider } from "src/contexts/CartContext";
+import { useCartContext } from "src/contexts/CartContext";
 
 import { Item } from "./Item";
 import {
@@ -10,7 +10,7 @@ import {
 } from "./ItemList.styles";
 
 export function ItemList() {
-  const { items } = useCartProvider();
+  const { items } = useCartContext();
 
   return (
     <CardContainer>
