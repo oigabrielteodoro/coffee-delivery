@@ -14,32 +14,22 @@ import {
   TypeList,
   CartContainer,
   Price,
-  CounterContainer,
-  CounterButton,
   Actions,
 } from "./CoffeeCard.styles";
 import { useCartProvider } from "src/contexts/CartContext";
+import { CounterButton } from "src/components/Button/CounterButton";
 
 type Props = {
   coffee: Coffee;
 };
 
 export function CoffeeCard({ coffee }: Props) {
-  const { createNewCartItem, incrementAmount, decrementAmount, getCartItem } =
-    useCartProvider();
+  const { createNewCartItem, getCartItem } = useCartProvider();
 
   const amount = getCartItem(coffee)?.amount;
 
   function handleCreateNewCartItem() {
     createNewCartItem(coffee, amount ?? 1);
-  }
-
-  function handleIncrementAmount() {
-    incrementAmount(coffee);
-  }
-
-  function handleDecrementAmount() {
-    decrementAmount(coffee);
   }
 
   return (
@@ -57,15 +47,7 @@ export function CoffeeCard({ coffee }: Props) {
       <CartContainer>
         <Price>{toCurrency(coffee.costAmount)}</Price>
         <Actions>
-          <CounterContainer>
-            <CounterButton onClick={handleDecrementAmount}>
-              <Minus size={14} weight="bold" />
-            </CounterButton>
-            <span>{amount ?? 0}</span>
-            <CounterButton onClick={handleIncrementAmount}>
-              <Plus size={14} weight="bold" />
-            </CounterButton>
-          </CounterContainer>
+          <CounterButton coffee={coffee} />
           <Button variant="purple-dark" onClick={handleCreateNewCartItem}>
             <ShoppingCart size={20} weight="fill" />
           </Button>

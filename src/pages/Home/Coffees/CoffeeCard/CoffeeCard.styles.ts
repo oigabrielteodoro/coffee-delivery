@@ -94,36 +94,3 @@ export const Actions = styled.div`
   display: flex;
   column-gap: 0.8rem;
 `;
-
-export const CounterContainer = styled.div`
-  display: flex;
-  align-items: center;
-  row-gap: 0.4rem;
-
-  height: 3.8rem;
-  padding-inline: 1.2rem;
-  background: ${({ theme }) => theme["base-button"]};
-  border-radius: 0.6rem;
-
-  > svg {
-    color: ${({ theme }) => theme.purple};
-  }
-
-  > span {
-    font-size: 1.6rem;
-    color: ${({ theme }) => theme["base-title"]};
-    min-width: 2rem;
-    text-align: center;
-  }
-`;
-
-export const CounterButton = styled.button`
-  color: ${({ theme }) => theme.purple};
-  background: transparent;
-
-  border: 0;
-  border-radius: 0.2rem;
-
-  box-shadow: 0;
-  cursor: pointer;
-`;
