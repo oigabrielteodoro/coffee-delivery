@@ -2,10 +2,13 @@ import { MapPin, ShoppingCart } from "phosphor-react";
 
 import { Assets } from "src/assets";
 import { Button } from "src/components/Button";
+import { useCartProvider } from "src/contexts/CartContext";
 
-import { Actions, HeaderContainer } from "./Header.styles";
+import { Actions, HeaderContainer, TotalAmount } from "./Header.styles";
 
 export function Header() {
+  const { totalAmount } = useCartProvider();
+
   return (
     <HeaderContainer>
       <img src={Assets.LOGO} />
@@ -15,6 +18,7 @@ export function Header() {
           Porto Alegre, RS
         </Button>
         <Button variant="yellow-light">
+          {totalAmount > 0 && <TotalAmount>{totalAmount}</TotalAmount>}
           <ShoppingCart size={20} weight="fill" />
         </Button>
       </Actions>
