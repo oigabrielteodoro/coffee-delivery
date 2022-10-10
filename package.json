@@ -14,15 +14,18 @@
     "phosphor-react": "1.4.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "react-hook-form": "7.37.0",
     "react-router-dom": "6.4.1",
     "styled-components": "5.3.6",
-    "uuid": "9.0.0"
+    "uuid": "9.0.0",
+    "vanilla-masker": "1.2.0"
   },
   "devDependencies": {
     "@types/react": "^18.0.17",
     "@types/react-dom": "^18.0.6",
     "@types/styled-components": "5.1.26",
     "@types/uuid": "8.3.4",
+    "@types/vanilla-masker": "1.2.1",
     "@typescript-eslint/eslint-plugin": "^5.38.1",
     "@typescript-eslint/parser": "^5.38.1",
     "@vitejs/plugin-react": "^2.1.0",
