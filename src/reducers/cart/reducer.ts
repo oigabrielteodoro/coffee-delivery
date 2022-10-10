@@ -28,7 +28,7 @@ export function cartReducer(state: CartState, action: Action) {
     case ActionTypes.REMOVE_CART_ITEM: {
       return produce(state, (draft) => {
         draft.items = draft.items.filter(
-          (cartItem) => cartItem.id === action.payload.cartItem.id
+          (cartItem) => cartItem.id !== action.payload.cartItem.id
         );
       });
     }
