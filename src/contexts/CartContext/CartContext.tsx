@@ -13,6 +13,7 @@ import { Coffee } from "src/lib/Coffees";
 import {
   addNewCartItemAction,
   CartItem,
+  removeCartItemAction,
   updateAmountCartItemAction,
 } from "src/reducers/cart/actions";
 import { cartReducer } from "src/reducers/cart/reducer";
@@ -27,6 +28,7 @@ type CartContextData = {
   getCartItem: (coffee: Coffee) => CartItem | undefined;
   incrementAmount: (coffee: Coffee) => void;
   decrementAmount: (coffee: Coffee) => void;
+  removeCartItem: (coffee: Coffee) => void;
   createNewCartItem: (coffee: Coffee, amount: number) => void;
 };
 
@@ -91,9 +93,21 @@ export function CartProvider({ children }: CartProviderProps) {
 
     const newAmount = cartItem.amount - 1;
 
+    if (newAmount === 0) {
+      return dispatch(removeCartItemAction(cartItem));
+    }
+
     if (newAmount < 0) return;
 
     dispatch(updateAmountCartItemAction(cartItem, newAmount));
+  }
+
+  function removeCartItem(coffee: Coffee) {
+    const cartItem = getCartItem(coffee);
+
+    if (!cartItem) return;
+
+    dispatch(removeCartItemAction(cartItem));
   }
 
   const totalAmount = useMemo(() => {
@@ -111,6 +125,7 @@ export function CartProvider({ children }: CartProviderProps) {
         createNewCartItem,
         incrementAmount,
         decrementAmount,
+        removeCartItem,
       }}
     >
       {children}
