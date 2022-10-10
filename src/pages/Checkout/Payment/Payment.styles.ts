@@ -1,5 +1,5 @@
 import { Button } from "src/components/Button";
-import styled, { css } from "styled-components";
+import styled from "styled-components";
 
 export const PaymentContainer = styled.div`
   display: grid;
@@ -10,4 +10,7 @@ export const PaymentContainer = styled.div`
 export const PaymentButton = styled(Button)`
   padding: 1.6rem;
   column-gap: 1.2rem;
+  text-transform: uppercase;
+  text-align: left;
+  font-size: 1.2rem;
 `;
