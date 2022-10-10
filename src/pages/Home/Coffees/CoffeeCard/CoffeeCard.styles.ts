@@ -14,7 +14,7 @@ export const Card = styled.li`
 
 export const Image = styled.img`
   position: absolute;
-  top: -4rem;
+  top: -2rem;
   left: 50%;
   transform: translateX(-50%);
 
@@ -29,7 +29,7 @@ export const TypeList = styled.ul`
   justify-content: center;
 
   gap: 0.4rem;
-  margin-top: 8rem;
+  margin-top: 10rem;
 `;
 
 export const TypeBadge = styled.li`
@@ -39,6 +39,8 @@ export const TypeBadge = styled.li`
   font-size: 1rem;
   font-weight: 700;
   line-height: 1.3rem;
+
+  text-transform: uppercase;
 
   ${({ theme }) => css`
     background-color: ${theme["yellow-light"]};

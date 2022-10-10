@@ -18,20 +18,28 @@ import {
   CounterButton,
   Actions,
 } from "./CoffeeCard.styles";
+import { useCartProvider } from "src/contexts/CartContext";
 
 type Props = {
   coffee: Coffee;
 };
 
 export function CoffeeCard({ coffee }: Props) {
-  const [amount, setAmount] = useState(1);
+  const { createNewCartItem, incrementAmount, decrementAmount, getCartItem } =
+    useCartProvider();
+
+  const amount = getCartItem(coffee)?.amount;
+
+  function handleCreateNewCartItem() {
+    createNewCartItem(coffee, amount ?? 1);
+  }
 
   function handleIncrementAmount() {
-    setAmount((state) => state + 1);
+    incrementAmount(coffee);
   }
 
   function handleDecrementAmount() {
-    setAmount((state) => (state > 1 ? state - 1 : state));
+    decrementAmount(coffee);
   }
 
   return (
@@ -53,12 +61,12 @@ export function CoffeeCard({ coffee }: Props) {
             <CounterButton onClick={handleDecrementAmount}>
               <Minus size={14} weight="bold" />
             </CounterButton>
-            <span>{amount}</span>
+            <span>{amount ?? 0}</span>
             <CounterButton onClick={handleIncrementAmount}>
               <Plus size={14} weight="bold" />
             </CounterButton>
           </CounterContainer>
-          <Button variant="purple-dark">
+          <Button variant="purple-dark" onClick={handleCreateNewCartItem}>
             <ShoppingCart size={20} weight="fill" />
           </Button>
         </Actions>
