@@ -7,10 +7,12 @@ import * as zod from "zod";
 
 import { Card } from "src/components/Card";
 
-import { Payment } from "./Payment";
+import { Payment, PaymentType } from "./Payment";
 import { ProductList } from "./ProductList";
 import { CheckoutForm } from "./CheckoutForm";
 import { CheckoutContainer, FinishYourOrderContainer } from "./Checkout.styles";
+import { useOrderContext } from "src/contexts/OrderContext";
+import { useCartProvider } from "src/contexts/CartContext";
 
 const REQUIRED_FIELD_MESSAGE = "Campo obrigatório.";
 
@@ -31,18 +33,35 @@ const addressValidationSchema = zod.object({
 
 export type Address = zod.infer<typeof addressValidationSchema>;
 
+type FinishYourOrderParams = Address & {
+  paymentType: PaymentType;
+};
+
 export function Checkout() {
   const theme = useTheme();
-
   const navigate = useNavigate();
 
-  const form = useForm({
+  const { items, resetCart } = useCartProvider();
+  const { createNewOrder } = useOrderContext();
+
+  const form = useForm<FinishYourOrderParams>({
     resolver: zodResolver(addressValidationSchema),
   });
 
   const { handleSubmit } = form;
 
-  function handleFinishOrder() {
+  function handleFinishOrder({
+    paymentType,
+    ...address
+  }: FinishYourOrderParams) {
+    createNewOrder({
+      address,
+      paymentType,
+      products: items,
+    });
+
+    resetCart();
+
     navigate("/success");
   }
 

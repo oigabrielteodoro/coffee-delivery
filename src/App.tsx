@@ -6,15 +6,18 @@ import { defaultTheme } from "./styles/themes/default";
 
 import { Router } from "./Router";
 import { CartProvider } from "./contexts/CartContext";
+import { OrderProvider } from "./contexts/OrderContext";
 
 export function App() {
   return (
     <ThemeProvider theme={defaultTheme}>
-      <CartProvider>
-        <BrowserRouter>
-          <Router />
-        </BrowserRouter>
-      </CartProvider>
+      <OrderProvider>
+        <CartProvider>
+          <BrowserRouter>
+            <Router />
+          </BrowserRouter>
+        </CartProvider>
+      </OrderProvider>
       <GlobalStyle />
     </ThemeProvider>
   );

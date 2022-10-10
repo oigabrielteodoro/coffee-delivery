@@ -10,6 +10,7 @@ export enum ActionTypes {
   ADD_NEW_CART_ITEM = "ADD_NEW_CART_ITEM",
   REMOVE_CART_ITEM = "REMOVE_CART_ITEM",
   UPDATE_AMOUNT_CART_ITEM = "UPDATE_AMOUNT_CART_ITEM",
+  RESET_CART = "RESET_CART",
 }
 
 export type Action = {
@@ -45,5 +46,11 @@ export function updateAmountCartItemAction(
       cartItem,
       newAmount,
     },
+  };
+}
+
+export function resetCartAction() {
+  return {
+    type: ActionTypes.RESET_CART,
   };
 }

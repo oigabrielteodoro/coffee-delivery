@@ -5,7 +5,7 @@ import { useTheme } from "styled-components";
 import { PaymentButton, PaymentContainer } from "./Payment.styles";
 import { useFormContext } from "react-hook-form";
 
-type PaymentType = "CREDIT_CARD" | "DEBIT_CARD" | "CASH";
+export type PaymentType = "CREDIT_CARD" | "DEBIT_CARD" | "CASH";
 
 export function Payment() {
   const theme = useTheme();

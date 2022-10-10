@@ -15,6 +15,7 @@ import {
   CartItem,
   removeCartItemAction,
   updateAmountCartItemAction,
+  resetCartAction,
 } from "src/reducers/cart/actions";
 import { cartReducer } from "src/reducers/cart/reducer";
 
@@ -30,6 +31,7 @@ type CartContextData = {
   decrementAmount: (coffee: Coffee) => void;
   removeCartItem: (product: CartItem) => void;
   createNewCartItem: (coffee: Coffee, amount: number) => void;
+  resetCart: () => void;
 };
 
 const CartContext = createContext({} as CartContextData);
@@ -106,6 +108,10 @@ export function CartProvider({ children }: CartProviderProps) {
     dispatch(removeCartItemAction(product));
   }
 
+  function resetCart() {
+    dispatch(resetCartAction());
+  }
+
   const totalAmount = useMemo(() => {
     return cartState.items.reduce((total, { amount }) => {
       return total + amount;
@@ -122,6 +128,7 @@ export function CartProvider({ children }: CartProviderProps) {
         incrementAmount,
         decrementAmount,
         removeCartItem,
+        resetCart,
       }}
     >
       {children}

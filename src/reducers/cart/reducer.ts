@@ -47,6 +47,11 @@ export function cartReducer(state: CartState, action: Action) {
         draft.items[currentCartItemIndex].amount = action.payload.newAmount;
       });
     }
+    case ActionTypes.RESET_CART: {
+      return produce(state, (draft) => {
+        draft.items = [];
+      });
+    }
     default:
       return state;
   }

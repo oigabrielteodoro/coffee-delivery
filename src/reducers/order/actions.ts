@@ -1,9 +1,10 @@
 import { Address } from "src/pages/Checkout";
+import { PaymentType } from "src/pages/Checkout/Payment";
 import { CartItem } from "src/reducers/cart/actions";
 
 export type Order = {
-  id: string;
-  product: CartItem;
+  paymentType: PaymentType;
+  products: CartItem[];
   address: Address;
 };
 
