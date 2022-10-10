@@ -1,3 +1,4 @@
+import { useFormContext } from "react-hook-form";
 import { useCartContext } from "src/contexts/CartContext";
 import { toCurrency } from "src/lib/Money";
 
@@ -14,7 +15,15 @@ import {
 const DELIVERY_TAX = 350;
 
 export function ItemList() {
+  const {
+    formState: { errors, isDirty },
+  } = useFormContext();
   const { items, totalAmount } = useCartContext();
+
+  const hasError = Object.keys(errors).length > 0;
+  const isEmptyItems = items.length === 0;
+
+  const isSubmitDisabled = hasError || isEmptyItems || !isDirty;
 
   return (
     <CardContainer>
@@ -37,7 +46,11 @@ export function ItemList() {
           <strong>{toCurrency(totalAmount + DELIVERY_TAX)}</strong>
         </Total>
       </TotalContainer>
-      <ConfirmOrderButton type="submit" variant="yellow">
+      <ConfirmOrderButton
+        type="submit"
+        variant="yellow"
+        disabled={isSubmitDisabled}
+      >
         Confirmar pedido
       </ConfirmOrderButton>
     </CardContainer>

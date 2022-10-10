@@ -5,7 +5,7 @@ const buttonVariants = {
     background-color: ${({ theme }) => theme["purple-light"]};
     color: ${({ theme }) => theme.purple};
 
-    &:hover {
+    &:not(:disabled) &:hover {
       background-color: ${({ theme }) => theme.purple};
       color: ${({ theme }) => theme.white};
     }
@@ -19,7 +19,7 @@ const buttonVariants = {
     background-color: ${({ theme }) => theme["purple-dark"]};
     color: ${({ theme }) => theme.white};
 
-    &:hover {
+    &:not(:disabled) &:hover {
       background-color: ${({ theme }) => theme.purple};
       color: ${({ theme }) => theme.white};
     }
@@ -28,7 +28,7 @@ const buttonVariants = {
     background-color: ${({ theme }) => theme["yellow-light"]};
     color: ${({ theme }) => theme["yellow-dark"]};
 
-    &:hover {
+    &:not(:disabled) &:hover {
       background-color: ${({ theme }) => theme.yellow};
       color: ${({ theme }) => theme.white};
     }
@@ -37,7 +37,7 @@ const buttonVariants = {
     background-color: ${({ theme }) => theme.yellow};
     color: ${({ theme }) => theme.white};
 
-    &:hover {
+    &:not(:disabled) &:hover {
       background-color: ${({ theme }) => theme["yellow-dark"]};
     }
   `,
@@ -45,7 +45,7 @@ const buttonVariants = {
     background-color: ${({ theme }) => theme["base-button"]};
     color: ${({ theme }) => theme["base-text"]};
 
-    &:hover {
+    &:not(:disabled) &:hover {
       background-color: ${({ theme }) => theme["base-hover"]};
       color: ${({ theme }) => theme["base-subtitle"]};
     }
@@ -71,6 +71,11 @@ export const Button = styled.button<ButtonProps>`
   font-size: 1.4rem;
   line-height: 130%;
   transition: all 0.3s;
+
+  &:disabled {
+    opacity: 0.8;
+    cursor: not-allowed;
+  }
 
   ${({ variant }) => buttonVariants[variant]}
 `;

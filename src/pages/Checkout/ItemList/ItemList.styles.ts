@@ -6,6 +6,7 @@ import { Button as BaseButton } from "src/components/Button";
 export const CardContainer = styled(BaseCardContainer)`
   border-radius: 0.6rem 4.4rem;
   margin-top: 1.2rem;
+  gap: 0;
 `;
 
 export const ListContainer = styled.ul`
@@ -16,6 +17,7 @@ export const ListContainer = styled.ul`
 
 export const ConfirmOrderButton = styled(BaseButton)`
   padding: 1.6rem;
+  margin-top: 2.4rem;
 
   font-weight: 700;
 
